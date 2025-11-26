@@ -2,15 +2,25 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
+const serviceOptions = [
+  { id: "planning", label: "Planning" },
+  { id: "construction", label: "Construction" },
+  { id: "renovation", label: "Renovation" },
+  { id: "interior", label: "Interior Design" },
+  { id: "other", label: "Other" },
+];
+
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   phone: z.string().trim().min(10, "Phone number must be at least 10 digits").max(15, "Phone number must be less than 15 digits"),
+  services: z.array(z.string()).min(1, "Please select at least one service"),
   message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
 });
 
@@ -20,6 +30,7 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
+    services: [] as string[],
     message: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -32,6 +43,19 @@ export default function Contact() {
     // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const handleServiceToggle = (serviceId: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(serviceId)
+        ? prev.services.filter((id) => id !== serviceId)
+        : [...prev.services, serviceId],
+    }));
+    // Clear error when user selects a service
+    if (errors.services) {
+      setErrors((prev) => ({ ...prev, services: "" }));
     }
   };
 
@@ -63,6 +87,7 @@ export default function Contact() {
       name: "",
       email: "",
       phone: "",
+      services: [],
       message: "",
     });
     setErrors({});
@@ -138,6 +163,32 @@ export default function Contact() {
                   />
                   {errors.phone && (
                     <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-3 text-foreground">
+                    Required Service *
+                  </label>
+                  <div className="space-y-3">
+                    {serviceOptions.map((service) => (
+                      <div key={service.id} className="flex items-center space-x-2">
+                        <Checkbox
+                          id={service.id}
+                          checked={formData.services.includes(service.id)}
+                          onCheckedChange={() => handleServiceToggle(service.id)}
+                        />
+                        <label
+                          htmlFor={service.id}
+                          className="text-sm text-foreground cursor-pointer"
+                        >
+                          {service.label}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  {errors.services && (
+                    <p className="text-sm text-destructive mt-1">{errors.services}</p>
                   )}
                 </div>
 
