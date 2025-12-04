@@ -14,8 +14,8 @@ import {
 const services = [
   {
     icon: Building2,
-    title: "Construction Management",
-    description: "Comprehensive project management from initial planning through final completion.",
+    title: "Consultation",
+    description: "Expert guidance to help you make informed decisions from the very start of your project.",
     features: [
       "Site preparation and planning",
       "Budget management and cost control",

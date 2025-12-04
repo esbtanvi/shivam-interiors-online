@@ -9,20 +9,30 @@ import villaExterior from "@/assets/villa-exterior.jpg";
 import villaInterior from "@/assets/villa-interior.jpg";
 import officeExterior from "@/assets/office-exterior.jpg";
 import officeInterior from "@/assets/office-interior.jpg";
-
+import bankImage00 from "@/assets/BankImage00.png"
+import bankImage01 from "@/assets/BankImage01.jpeg"
+import bankImage02 from "@/assets/BankImage02.jpeg"
+import bankImage03 from "@/assets/BankImage03.jpeg"
 const categories = ["All", "Residential", "Commercial", "Interior Design"];
 
 const projects = [
   {
-    image: residentialImage,
-    title: "Modern Villa Project",
-    category: "Residential",
-    description: "A contemporary villa with sustainable design elements and luxury finishes.",
-    location: "City Center",
-    images: [villaExterior, villaInterior, residentialImage],
-    fullDescription: "This stunning modern villa showcases contemporary architecture at its finest. Featuring sustainable design elements, energy-efficient systems, and luxury finishes throughout. The property includes spacious open-plan living areas, a gourmet kitchen, master suite with spa-like bathroom, and beautifully landscaped gardens.",
-    features: ["4 Bedrooms", "5 Bathrooms", "3500 sq ft", "Smart Home System", "Solar Panels", "Infinity Pool"],
-    completionDate: "March 2024",
+    image: bankImage00,
+category: "Commercial",
+title:'Bank Building',
+description: "A fully modernized banking facility designed with security, efficiency, and customer experience at its core.",
+location: "Jaipur",
+images: [bankImage03, bankImage01, bankImage02, ],
+fullDescription: "This state-of-the-art banking facility was constructed with a focus on security, durability, and operational efficiency. The building features reinforced structural design, advanced surveillance infrastructure, and a customer-centric interior layout to support smooth banking operations. A blend of modern architectural elements, sustainable materials, and premium-quality finishes ensures both long-term functionality and a welcoming environment for clients and staff. From vault installations to digital infrastructure, every component was executed to meet strict compliance and safety standards.",
+features: [
+  "High-security Vault",
+  "24/7 Surveillance & Access Control",
+  "Energy-efficient HVAC & Electrical Systems",
+  "ATM Drive-Through & Self-Service Zone",
+  "Customer Waiting Lounge",
+  "IT Server & Secure Data Rooms"
+],
+completionDate: "March 2024",
   },
   {
     image: commercialImage,
@@ -141,7 +151,7 @@ export default function Portfolio() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover"
+                  className="w-full h-[400px] object-cover"
                 />
                 <CardContent className="p-6">
                   <span className="text-sm text-accent font-semibold">

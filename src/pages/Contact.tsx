@@ -40,7 +40,6 @@ export default function Contact() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -59,30 +58,32 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate form data
-    const result = contactSchema.safeParse(formData);
-    
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach((error) => {
-        if (error.path[0]) {
-          fieldErrors[error.path[0].toString()] = error.message;
-        }
-      });
-      setErrors(fieldErrors);
-      return;
-    }
+    // Submit to Formspree
+try {
+  const response = await fetch("https://formspree.io/f/abcdxyzy", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      services: formData.services.join(", "),
+      message: formData.message
+    })
+  });
 
-    // If validation passes, show success message
+  if (response.ok) {
     toast({
       title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+      description: "We received your message and will contact you shortly.",
     });
 
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -90,13 +91,23 @@ export default function Contact() {
       services: [],
       message: "",
     });
-    setErrors({});
+  } else {
+    throw new Error("Form submission error");
+  }
+} catch (error) {
+  toast({
+    title: "Something went wrong",
+    description: "Failed to send the message. Please try again.",
+    variant: "destructive",
+  });
+}
+
   };
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/90 text-white py-20">
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4 md:text-5xl">Contact Us</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
@@ -233,7 +244,7 @@ export default function Contact() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">+91 XXXXX XXXXX</p>
+                    <p className="text-muted-foreground">+91 90578 21513</p>
                   </CardContent>
                 </Card>
 
@@ -245,7 +256,7 @@ export default function Contact() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">info@shivamengineers.com</p>
+                    <p className="text-muted-foreground">shivamengineers2003@gmail.com</p>
                   </CardContent>
                 </Card>
 
@@ -258,9 +269,10 @@ export default function Contact() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      Your Street Address<br />
-                      Your City, Your State - PIN Code<br />
-                      India
+                      Mahima Trinity Mall,Swage Farm<br />
+                      New Sanganer
+                  Road,Sodala,Jaipur- 302019,India<br />
+                      
                     </p>
                   </CardContent>
                 </Card>
@@ -274,7 +286,7 @@ export default function Contact() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      Monday - Saturday: 9:00 AM - 6:00 PM<br />
+                      Monday - Saturday: 10:00 AM - 6:00 PM<br />
                       Sunday: Closed
                     </p>
                   </CardContent>

@@ -5,24 +5,25 @@ import { ArrowRight, Award, Building2, Users, CheckCircle } from "lucide-react";
 import heroImage from "@/assets/hero-construction.jpg";
 import interiorImage from "@/assets/interior-luxury.jpg";
 import teamImage from "@/assets/team-planning.jpg";
-import residentialImage from "@/assets/project-residential.jpg";
-import commercialImage from "@/assets/project-commercial.jpg";
-import interiorProjectImage from "@/assets/project-interior.jpg";
-
+import residentialProject1 from "@/assets/residentialProject1.jpeg";
+import commercialProject01 from "@/assets/commercialProject01.jpeg"
+import interiorDesign from "@/assets/interiorDesign.jpeg"
+import AboutUs from "./AboutUs";
+import logo from "@/assets/SHIVAM-ENGINEERS-LOGO-1-copy.png"
 const services = [
   {
-    title: "Construction Management",
-    description: "Complete project oversight from planning to completion with quality assurance.",
+    title: "Consultation",
+    description: "Expert guidance to help you make informed decisions from the very start of your project.",
     icon: Building2,
   },
   {
-    title: "Interior Design",
-    description: "Transform your spaces with creative and functional interior design solutions.",
+    title: "Quality Construction",
+    description: "Reliable, high-quality construction built with precision and long-lasting craftsmanship.",
     icon: Award,
   },
   {
-    title: "Architectural Planning",
-    description: "Innovative architectural designs that blend aesthetics with functionality.",
+    title: "Interior Design",
+    description: "Customized interior designs that blend style, comfort, and functionality perfectly tailored to your taste.",
     icon: Users,
   },
 ];
@@ -37,44 +38,67 @@ const features = [
 ];
 
 const projects = [
-  { image: residentialImage, title: "Modern Villa", category: "Residential" },
-  { image: commercialImage, title: "Corporate Office", category: "Commercial" },
-  { image: interiorProjectImage, title: "Luxury Home", category: "Interior Design" },
+  { image: residentialProject1, title: "Appartments", category: "Residential" },
+  { image: commercialProject01, title: "Commercial Buildings", category: "Commercial" },
+  { image: interiorDesign, title: "Soothing Spaces", category: "Interior Design" },
 ];
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImage})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70" />
-        </div>
-        <div className="container relative z-10 mx-auto px-4 text-center text-white">
-          <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
-            Building Your Dreams Into Reality
-          </h1>
-          <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto text-white/90">
-            Expert construction and interior design services for residential and commercial projects
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white">
-                Get Free Quote
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link to="/portfolio">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-                View Our Work
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+<section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+  
+  {/* --- IMAGE STRIP --- */}
+  <div className="absolute inset-0 flex justify-center gap-4 px-4">
+    <img 
+      src="/src/assets/hero1.jpeg" 
+      alt="Hero Image 1"
+      className="h-full object-cover rounded-lg"
+    />
+    <img 
+      src="/src/assets/hero2.jpg" 
+      alt="Hero Image 2"
+      className="h-full object-cover rounded-lg"
+    />
+    <img 
+      src="/src/assets/hero3.jpg" 
+      alt="Hero Image 3"
+      className="h-full object-cover rounded-lg"
+    />
+  </div>
+
+<div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-primary/20" />
+
+  <div className="relative z-10 text-center text-white pr-4 pl-2 -mt-5 ml-12">
+    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+Where Your DREAM Space,  
+  </h1>
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+ Takes SHAPE  
+  </h2>
+
+
+    <p className="text-lg md:text-xl max-w-2xl mx-auto text-white/90 mb-8">
+      Expert construction and interior design services for residential and commercial projects
+    </p>
+
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Link to="/contact">
+        <Button size="lg" className="bg-accent hover:bg-accent/90 text-white">
+          Get Free Quote
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+      </Link>
+      <Link to="/portfolio">
+        <Button size="lg" variant="outline" className="border-white text-black hover:bg-white hover:text-primary">
+          View Our Work
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
+<AboutUs />
 
       {/* Services Overview */}
       <section className="py-16 bg-background">
@@ -174,25 +198,33 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary to-primary/90">
-        <div className="container mx-auto px-4 text-center">
-          <img 
-            src={teamImage} 
-            alt="Our professional team"
-            className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white shadow-lg"
-          />
-          <h2 className="text-3xl font-bold mb-4 text-white">Ready to Start Your Project?</h2>
-          <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-            Contact us today for a free consultation and quote. Let's bring your vision to life.
-          </p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-white">
-              Contact Us Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
-      </section>
+<section className="py-16 bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF]">
+  <div className="container mx-auto px-4 text-center">
+
+    <img 
+      src={logo} 
+      alt="Our professional team"
+      className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white shadow-lg"
+    />
+
+    <h2 className="text-3xl font-bold mb-4 text-white">
+      Ready to Start Your Project?
+    </h2>
+
+    <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+      Contact Shivam Engineers and Interior Designers today for your first FREE consultation!
+    </p>
+
+    <Link to="/contact">
+      <Button size="lg" className="bg-accent hover:bg-accent/80 text-white shadow-lg hover:scale-105 transition-all duration-300">
+        Contact Us Now
+        <ArrowRight className="ml-2 h-5 w-5" />
+      </Button>
+    </Link>
+
+  </div>
+</section>
+
     </div>
   );
 }

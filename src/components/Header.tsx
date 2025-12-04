@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: "Home", href: "/" },
+  {name: "About Us", href:"/about-us"},
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Contact", href: "/contact" },
+  
 ];
 
 export const Header = () => {
@@ -17,13 +18,21 @@ export const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container mx-auto flex items-center justify-between p-4 lg:px-8" aria-label="Global">
+      <nav className="container mx-auto flex items-center justify-between p-0 lg:px-8" aria-label="Global">
+
+
+<a href="/">
+<img
+  src="/assets/profile/SHIVAM-ENGINEERS-LOGO-1-copy.png"
+  alt="Shivam Engineers Logo"
+  width={70}
+  height={70}
+  className="object-contain"
+  
+/>
+</a>
+
         <div className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Shivam Engineers
-            </span>
-          </Link>
         </div>
         <div className="flex lg:hidden">
           <Button
