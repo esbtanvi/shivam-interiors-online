@@ -1,5 +1,5 @@
 import React from "react";
-
+import AboutUsImage from "@/assets/aboutUs.jpeg"
 const AboutUs = () => {
   return (
    <div className="flex flex-col min-h-screen">
@@ -38,7 +38,7 @@ const AboutUs = () => {
         {/* Right Image */}
 <div className="bg-none ">
   <img
-    src="/src/assets/AboutUs.jpeg"
+    src={AboutUsImage}
     alt="About Shivam Engineers & Interior Designers"
     className="w-[400px] h-[400px] rounded-lg shadow-lg ml-20 object-cover object-top"
   />

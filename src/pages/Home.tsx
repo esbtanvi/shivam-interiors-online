@@ -10,6 +10,9 @@ import commercialProject01 from "@/assets/commercialProject01.jpeg"
 import interiorDesign from "@/assets/interiorDesign.jpeg"
 import AboutUs from "./AboutUs";
 import logo from "@/assets/SHIVAM-ENGINEERS-LOGO-1-copy.png"
+import Hero1 from "@/assets/Hero1.jpeg"
+import Hero2 from "@/assets/hero2.jpg"
+import Hero3 from "@/assets/hero3.jpg"
 const services = [
   {
     title: "Consultation",
@@ -52,17 +55,17 @@ export default function Home() {
   {/* --- IMAGE STRIP --- */}
   <div className="absolute inset-0 flex justify-center gap-4 px-4">
     <img 
-      src="/src/assets/hero1.jpeg" 
+      src={Hero1}
       alt="Hero Image 1"
       className="h-full object-cover rounded-lg"
     />
     <img 
-      src="/src/assets/hero2.jpg" 
+      src={Hero2}
       alt="Hero Image 2"
       className="h-full object-cover rounded-lg"
     />
     <img 
-      src="/src/assets/hero3.jpg" 
+      src={Hero3} 
       alt="Hero Image 3"
       className="h-full object-cover rounded-lg"
     />
