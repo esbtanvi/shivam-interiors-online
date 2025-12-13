@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Building2, Mail, Phone, MapPin } from 'lucide-react';
+import { Building2, Mail, Phone, MapPin, Pin, Facebook, Instagram } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -26,10 +26,10 @@ export const Footer = () => {
             <ul className='space-y-2'>
               <li>
                 <Link
-                  to='/'
+                  to='/about-us'
                   className='text-sm text-muted-foreground hover:text-primary transition-colors'
                 >
-                  Home
+                  About-Us
                 </Link>
               </li>
               <li>
@@ -72,7 +72,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className='h-full'>
             <h3 className='mb-4 text-sm font-semibold text-foreground'>
               Contact Info
             </h3>
@@ -83,15 +83,31 @@ export const Footer = () => {
               </li>
               <li className='flex items-start gap-2 text-sm text-muted-foreground'>
                 <Mail className='h-4 w-4 mt-0.5 text-accent' />
-                <span>shivamengineers2003@gmail.com</span>
+                <a href='mailto:shivamengineers2003@gmail.com'>
+                  shivamengineers2003@gmail.com
+                </a>
               </li>
               <li className='flex items-start gap-2 text-sm text-muted-foreground'>
-                <MapPin className='h-4 w-4 mt-0.5 text-accent' />
+                <Pin className='h-7 w-7 mt-0.5 text-accent' />
                 <span>
                   Mahima Trinity Mall,Swage Farm,New Sanganer
                   Road,Sodala,Jaipur- 302019
                 </span>
               </li>
+
+              <li className='flex items-start gap-2 text-sm text-muted-foreground'>
+                <Facebook className='h-4 w-4 mt-0.5 text-accent' />
+                <a href='https://www.facebook.com/profile.php?id=61579971371649'>
+                  <span>Shivam Engineers</span>
+                </a>
+              </li>
+   <li className='flex items-start gap-2 text-sm text-muted-foreground'>
+                <Instagram className='h-4 w-4 mt-0.5 text-accent' />
+                <a href='https://www.instagram.com/shivamengineersandinteriors'>
+                  <span>@shivamengineersandinteriors</span>
+                </a>
+              </li>
+
             </ul>
           </div>
         </div>

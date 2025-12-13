@@ -207,12 +207,15 @@ Where Your DREAM Space,
       className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white shadow-lg"
     />
 
-    <h2 className="text-3xl font-bold mb-4 text-white">
+    <h2 className="text-6xl font-bold mb-4 text-white">
       Ready to Start Your Project?
     </h2>
 
-    <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-      Contact Shivam Engineers and Interior Designers today for your first FREE consultation!
+    <p className="text-white/90 mb-8 max-w-2xl text-2xl mx-auto">
+      Contact Shivam Engineers and Interior Designers today for your first 
+{' '}      <span className="font-bold text-2xl">
+        FREE
+        </span> consultation!
     </p>
 
     <Link to="/contact">

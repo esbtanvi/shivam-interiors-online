@@ -2,14 +2,20 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <section className="w-full bg-white py-20 px-6 md:px-16 lg:px-32">
-      {/* Heading */}
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-12">
-        About Us
-      </h1>
+   <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-6xl font-bold mb-4 md:text-6xl">About us</h1>
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+            Get to know who we are and what drives our work.
+          </p>
+        </div>
+      </section>
+    
 
       {/* Image + Text Block */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="grid grid-cols-1 ml-28 mt-16 md:grid-cols-2 gap-10 items-center">
         {/* Left Text Section */}
         <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
           <p>
@@ -30,7 +36,7 @@ const AboutUs = () => {
         </div>
 
         {/* Right Image */}
-<div className="bg-none">
+<div className="bg-none ">
   <img
     src="/src/assets/AboutUs.jpeg"
     alt="About Shivam Engineers & Interior Designers"
@@ -38,7 +44,7 @@ const AboutUs = () => {
   />
 </div>
       </div>
-    </section>
+    </div>
   );
 };
 

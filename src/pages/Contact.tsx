@@ -7,6 +7,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import emailjs from "emailjs-com";
+
 
 const serviceOptions = [
   { id: "planning", label: "Planning" },
@@ -32,6 +34,7 @@ export default function Contact() {
     phone: "",
     services: [] as string[],
     message: "",
+    estimatedAreaOfConstruction: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -63,7 +66,7 @@ export default function Contact() {
     
     // Submit to Formspree
 try {
-  const response = await fetch("https://formspree.io/f/abcdxyzy", {
+  const response = await fetch("https://formspree.io/f/mblnpkjr", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -84,12 +87,23 @@ try {
       description: "We received your message and will contact you shortly.",
     });
 
+    emailjs.send(
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  {
+    user_name: formData.name,
+    user_email: formData.email,
+  },
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+);
+
     setFormData({
       name: "",
       email: "",
       phone: "",
       services: [],
       message: "",
+      estimatedAreaOfConstruction: "",
     });
   } else {
     throw new Error("Form submission error");
@@ -177,6 +191,24 @@ try {
                   )}
                 </div>
 
+                   <div>
+                  <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
+                    Estimated Area of Construction
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.estimatedAreaOfConstruction}
+                    onChange={handleChange}
+                    placeholder="Tell us about the area of your project for better services..."
+                    rows={5}
+                    className={errors.message ? "border-destructive" : ""}
+                  />
+                  {errors.message && (
+                    <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                  )}
+                </div>
+
                 <div>
                   <label className="block text-sm font-medium mb-3 text-foreground">
                     Required Service *
@@ -220,6 +252,9 @@ try {
                     <p className="text-sm text-destructive mt-1">{errors.message}</p>
                   )}
                 </div>
+
+
+               
 
                 <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
                   Send Message

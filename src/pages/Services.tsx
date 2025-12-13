@@ -1,87 +1,87 @@
+// Updated Services component with larger icons
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { 
-  Building2, 
-  Paintbrush, 
-  Hammer, 
-  Home, 
-  Wrench, 
+import {
+  Building2,
+  Paintbrush,
+  Hammer,
+  Home,
+  Wrench,
   TreePine,
-  ArrowRight 
+  ArrowRight,
 } from "lucide-react";
+import MaterialIcon from "@/components/Materialicon";
+
+const ICON_SIZE = "text-[65px]";
 
 const services = [
+{
+  icon: () => (
+    <MaterialIcon name="home_work" className={"material-symbols-rounded " + ICON_SIZE + " text-accent"} />
+  ),
+  title: "Consultation",
+  description:
+    "Expert guidance to help you make informed decisions from the very start of your project.",
+  features: [
+    "Expert project evaluation",
+    "Clear budgeting guidance",
+    "Guidance tailored to your needs",
+  ],
+},
   {
-    icon: Building2,
-    title: "Consultation",
-    description: "Expert guidance to help you make informed decisions from the very start of your project.",
-    features: [
-      "Site preparation and planning",
-      "Budget management and cost control",
-      "Quality assurance and safety compliance",
-      "Timeline management and scheduling",
-      "Vendor and contractor coordination",
-    ],
-  },
-  {
-    icon: Paintbrush,
-    title: "Interior Design",
-    description: "Creative and functional interior design solutions for residential and commercial spaces.",
+    icon: () => (
+      <MaterialIcon name="developer_board" className={"material-symbols-rounded " + ICON_SIZE + " text-accent"} />
+    ),
+    title: "Planning",
+    description:
+      "Clear, detailed planning that transforms your vision into a practical project roadmap.",
     features: [
       "Space planning and layout design",
-      "Color consultation and material selection",
-      "Furniture and decor selection",
-      "Lighting design",
-      "3D visualization and rendering",
+            "3D visualization and rendering",
+"Mechanical, electrical, and plumbing (MEP) planning"
     ],
   },
   {
-    icon: Home,
-    title: "Residential Construction",
-    description: "Building dream homes with attention to detail and quality craftsmanship.",
+    icon: () => (
+      <MaterialIcon name="engineering" className={"material-symbols-rounded " + ICON_SIZE + " text-accent"} />
+    ),
+    title: "Construction",
+    description:
+      "Reliable, high-quality construction built with precision and long-lasting craftsmanship.",
     features: [
-      "Custom home construction",
-      "Villa and apartment projects",
+      "Custom residential and commercial contruction",
       "Foundation and structural work",
-      "Modern and traditional designs",
+      // "Modern and traditional designs",
       "Energy-efficient building solutions",
     ],
   },
   {
-    icon: Hammer,
-    title: "Commercial Construction",
-    description: "Professional construction services for offices, retail spaces, and commercial buildings.",
+    icon: () => (
+      <MaterialIcon name="imagesearch_roller" className={"material-symbols-rounded " + ICON_SIZE + " text-accent"} />
+    ),
+    title: "Renovation",
+    description:
+      "Thoughtful renovations that refresh, upgrade, and add new life to existing spaces.",
     features: [
-      "Office building construction",
-      "Retail and showroom development",
-      "Restaurant and hospitality projects",
-      "Industrial facilities",
-      "Commercial renovations",
+      "Comprehensive Space Upgrades",
+      "Functional Enhancements",
+      "Quality & Style",
+      // "Industrial facilities",
+      // "Commercial renovations",
     ],
   },
   {
-    icon: Wrench,
-    title: "Renovation & Remodeling",
-    description: "Transform existing spaces with expert renovation and remodeling services.",
+    icon: () => (
+      <MaterialIcon name="chair_fireplace" className={"material-symbols-rounded " + ICON_SIZE + " text-accent"} />
+    ),
+    title: "Interior Design",
+    description:
+      "Customized interior designs that blend style, comfort, and functionality perfectly tailored to your taste.",
     features: [
-      "Kitchen and bathroom remodeling",
-      "Home extensions and additions",
-      "Structural modifications",
-      "Modernization of old buildings",
-      "Restoration services",
-    ],
-  },
-  {
-    icon: TreePine,
-    title: "Landscape Design",
-    description: "Beautiful outdoor spaces that complement your property's architecture.",
-    features: [
-      "Garden design and planning",
-      "Hardscape installation",
-      "Outdoor living spaces",
-      "Irrigation systems",
-      "Sustainable landscaping",
+      "Tailored Design Concepts",
+      "Smart Space Planning",
+      "Harmonized Decor & Finishes",
     ],
   },
 ];
@@ -90,9 +90,9 @@ export default function Services() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary to-primary/90 text-white py-20">
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4 md:text-5xl">Our Services</h1>
+          <h1 className="text-6xl font-bold mb-4 md:text-6xl">Our Services</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
             Comprehensive construction and design solutions to bring your vision to life
           </p>
@@ -104,17 +104,26 @@ export default function Services() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="border-border hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="border-border hover:shadow-lg transition-shadow"
+              >
                 <CardHeader>
-                  <service.icon className="h-12 w-12 text-accent mb-4" />
+                  <service.icon />
                   <CardTitle className="text-foreground">{service.title}</CardTitle>
                 </CardHeader>
+
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
+                  <p className="text-muted-foreground mb-4">
+                    {service.description}
+                  </p>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="text-sm text-foreground flex items-start gap-2">
-                        <span className="text-accent mt-1">•</span>
+                      <li
+                        key={idx}
+                        className="text-sm text-foreground flex items-start gap-2"
+                      >
+                        <span className="text-accent mt-2">•</span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -123,22 +132,6 @@ export default function Services() {
               </Card>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-secondary/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-foreground">Need a Custom Solution?</h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            We offer customized services tailored to your specific needs. Contact us to discuss your project requirements.
-          </p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-accent hover:bg-accent/90">
-              Get a Free Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
         </div>
       </section>
     </div>
