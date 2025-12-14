@@ -135,9 +135,9 @@ export default function Portfolio() {
                   )}
                 </div>
 
-                <CardContent className="p-3 pt-2 md:p-6">
+                <CardContent className="p-4 pt-1 md:p-6">
                   <span className="text-sm text-accent font-semibold">{project.category}</span>
-                  <h3 className="text-xl font-semibold mt-2 mb-2 text-foreground">{project.title}</h3>
+                  <h3 className="text-xl font-semibold mt-1 mb-2 text-foreground">{project.title}</h3>
                   {/* <p className="text-muted-foreground text-sm mb-3">{project.description}</p> */}
                   <p className="text-sm text-primary font-medium">📍 {project.location}</p>
                 </CardContent>
