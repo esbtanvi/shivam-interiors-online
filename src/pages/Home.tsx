@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-<section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+<section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
   
   {/* --- IMAGE STRIP --- */}
   <div className="absolute inset-0 flex justify-center gap-4 px-4">
@@ -74,10 +74,10 @@ export default function Home() {
 <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-primary/20" />
 
   <div className="relative z-10 text-center text-white pr-4 pl-2 -mt-5 ml-12">
-    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
 Where Your DREAM Space,  
   </h1>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
  Takes SHAPE  
   </h2>
 
@@ -210,7 +210,7 @@ Where Your DREAM Space,
       className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white shadow-lg"
     />
 
-    <h2 className="text-6xl font-bold mb-4 text-white">
+    <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
       Ready to Start Your Project?
     </h2>
 

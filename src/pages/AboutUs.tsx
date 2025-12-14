@@ -4,10 +4,10 @@ const AboutUs = () => {
   return (
    <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-6xl font-bold mb-4 md:text-6xl">About us</h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">About us</h1>
+          <p className="text-base md:text-xl text-white/90 max-w-2xl mx-auto">
             Get to know who we are and what drives our work.
           </p>
         </div>
@@ -15,9 +15,9 @@ const AboutUs = () => {
     
 
       {/* Image + Text Block */}
-      <div className="grid grid-cols-1 ml-28 mt-16 md:grid-cols-2 gap-10 items-center">
+      <div className="container mx-auto px-4 mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center mb-12">
         {/* Left Text Section */}
-        <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
+        <div className="space-y-6 text-gray-700 leading-relaxed text-base md:text-lg text-left">
           <p>
             Established in 2003 by Mr. Shailesh Mathur, Shivam Engineers & Interior Designers has evolved into a professionally managed organization recognized for its excellence in engineering and interior design services.
           </p>
@@ -36,13 +36,13 @@ const AboutUs = () => {
         </div>
 
         {/* Right Image */}
-<div className="bg-none ">
-  <img
-    src={AboutUsImage}
-    alt="About Shivam Engineers & Interior Designers"
-    className="w-[400px] h-[400px] rounded-lg shadow-lg ml-20 object-cover object-top"
-  />
-</div>
+        <div className="flex justify-center md:justify-end">
+          <img
+            src={AboutUsImage}
+            alt="About Shivam Engineers & Interior Designers"
+            className="w-full max-w-[400px] h-auto aspect-square rounded-lg shadow-lg object-cover object-top"
+          />
+        </div>
       </div>
     </div>
   );

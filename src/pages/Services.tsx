@@ -90,9 +90,9 @@ export default function Services() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-6xl font-bold mb-4 md:text-6xl">Our Services</h1>
+          <h1 className="text-4xl font-bold mb-4 md:text-6xl">Our Services</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
             Comprehensive construction and design solutions to bring your vision to life
           </p>

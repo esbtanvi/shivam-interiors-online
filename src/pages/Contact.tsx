@@ -124,9 +124,9 @@ await emailjs.send(
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold mb-4 md:text-5xl">Contact Us</h1>
+          <h1 className="text-3xl font-bold mb-4 md:text-5xl">Contact Us</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
             Get in touch with us for your construction and interior design needs
           </p>
@@ -134,7 +134,7 @@ await emailjs.send(
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-background">
+      <section className="py-10 md:py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}

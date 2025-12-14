@@ -1,56 +1,82 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  {name: "About Us", href:"/about-us"},
+  { name: "About Us", href: "/about-us" },
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Contact", href: "/contact" },
-  
 ];
+
+/* ================= ANIMATIONS ================= */
+
+const menuVariants: Variants = {
+  hidden: { x: "100%" },
+  visible: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 30,
+      when: "beforeChildren",
+      staggerChildren: 0.08,
+    },
+  },
+  exit: {
+    x: "100%",
+    transition: { duration: 0.25 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.95, y: 8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.25, ease: "easeOut" as const },
+  },
+};
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  /* ================= LOCK BODY SCROLL ================= */
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <nav className="container mx-auto flex items-center justify-between p-0 lg:px-8" aria-label="Global">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-white lg:bg-background/90 lg:backdrop-blur">
+      <nav className="container mx-auto flex items-center justify-between px-4 py-3 lg:px-8">
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src="/assets/profile/SHIVAM-ENGINEERS-LOGO-1-copy.png"
+            alt="Shivam Engineers Logo"
+            width={64}
+            height={64}
+            className="object-contain"
+          />
+        </Link>
 
-
-<a href="/">
-<img
-  src="/assets/profile/SHIVAM-ENGINEERS-LOGO-1-copy.png"
-  alt="Shivam Engineers Logo"
-  width={70}
-  height={70}
-  className="object-contain"
-  
-/>
-</a>
-
-        <div className="flex lg:flex-1">
-        </div>
-        <div className="flex lg:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-8">
+        {/* Desktop Nav */}
+        <div className="hidden lg:flex items-center gap-x-8">
           {navigation.map((item) => (
             <Link
               key={item.name}
               to={item.href}
               className={cn(
-                "text-sm font-semibold leading-6 transition-colors hover:text-primary",
+                "text-sm font-semibold transition-colors hover:text-primary",
                 location.pathname === item.href
                   ? "text-primary"
                   : "text-foreground"
@@ -60,66 +86,106 @@ export const Header = () => {
             </Link>
           ))}
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+
+        {/* Desktop CTA */}
+        <div className="hidden lg:flex">
           <Link to="/contact">
-            <Button className="bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent/80">
+            <Button className="bg-gradient-to-r from-accent to-accent/90">
               Get Started
             </Button>
           </Link>
         </div>
+
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            <Menu className="h-6 w-6" />
+          </Button>
+        </div>
       </nav>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden" role="dialog" aria-modal="true">
-          <div className="fixed inset-0 z-50" />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
-            <div className="flex items-center justify-between">
-              <Link to="/" className="-m-1.5 p-1.5">
-                <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      {/* ================= MOBILE MENU ================= */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            {/* White Backdrop */}
+            <motion.div
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Slide Panel */}
+            <motion.div
+              className="fixed inset-y-0 right-0 z-50 w-[85%] max-w-sm bg-white px-6 py-6 shadow-xl"
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              drag="x"
+              dragDirectionLock
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.15}
+              onDragEnd={(_, info) => {
+                if (info.offset.x > 120) {
+                  setMobileMenuOpen(false);
+                }
+              }}
+              role="dialog"
+              aria-modal="true"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between">
+                <span className="text-lg font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   Shivam Engineers
                 </span>
-              </Link>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close menu"
-              >
-                <X className="h-6 w-6" />
-              </Button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-border">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <X className="h-6 w-6" />
+                </Button>
+              </div>
+
+              {/* Nav Items */}
+              <motion.div className="mt-10 space-y-2">
+                {navigation.map((item) => (
+                  <motion.div key={item.name} variants={itemVariants}>
                     <Link
-                      key={item.name}
                       to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={cn(
-                        "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors hover:bg-secondary",
+                        "block rounded-xl px-4 py-3 text-base font-semibold transition-colors",
                         location.pathname === item.href
-                          ? "text-primary"
-                          : "text-foreground"
+                          ? "bg-secondary text-primary"
+                          : "hover:bg-secondary"
                       )}
                     >
                       {item.name}
                     </Link>
-                  ))}
-                </div>
-                <div className="py-6">
-                  <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    <Button className="w-full bg-gradient-to-r from-accent to-accent/90 hover:from-accent/90 hover:to-accent/80">
-                      Get Started
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {/* CTA */}
+              <motion.div variants={itemVariants} className="mt-10">
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full bg-gradient-to-r from-accent to-accent/90">
+                    Get Started
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

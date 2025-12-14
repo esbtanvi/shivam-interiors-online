@@ -95,7 +95,7 @@ export default function Portfolio() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-20">
+      <section className="bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF] text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold mb-4 md:text-5xl">Our Portfolio</h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">Explore our successful projects and see the quality of our work</p>
@@ -123,7 +123,7 @@ export default function Portfolio() {
                 <div className="relative overflow-hidden h-[800px]">
                   <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentImageIndex[index] * 100}%)` }}>
                     {project.images.map((img, imgIdx) => (
-                      <img key={imgIdx} src={img} alt={`${project.title} - Image ${imgIdx + 1}`} className="w-full flex-shrink-0 object-cover h-[800px]" />
+                      <img key={imgIdx} src={img} alt={`${project.title} - Image ${imgIdx + 1}`} className="w-full flex-shrink-0 object-cover h-full" />
                     ))}
                   </div>
 
