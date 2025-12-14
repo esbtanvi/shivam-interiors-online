@@ -87,12 +87,15 @@ try {
       description: "We received your message and will contact you shortly.",
     });
 
-    emailjs.send(
+await emailjs.send(
   import.meta.env.VITE_EMAILJS_SERVICE_ID,
   import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
   {
     user_name: formData.name,
-    user_email: formData.email,
+    user_email: formData.email, 
+    phone: formData.phone,
+    services: formData.services.join(", "),
+    message: formData.message,
   },
   import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 );
@@ -195,15 +198,14 @@ try {
                   <label htmlFor="message" className="block text-sm font-medium mb-2 text-foreground">
                     Estimated Area of Construction
                   </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.estimatedAreaOfConstruction}
-                    onChange={handleChange}
-                    placeholder="Tell us about the area of your project for better services..."
-                    rows={5}
-                    className={errors.message ? "border-destructive" : ""}
-                  />
+<Textarea
+  id="estimatedAreaOfConstruction"
+  name="estimatedAreaOfConstruction"
+  value={formData.estimatedAreaOfConstruction}
+  onChange={handleChange}
+  placeholder="Tell us about the area of your project..."
+  rows={3}
+/>
                   {errors.message && (
                     <p className="text-sm text-destructive mt-1">{errors.message}</p>
                   )}
