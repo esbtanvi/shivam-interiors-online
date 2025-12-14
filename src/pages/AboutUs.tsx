@@ -16,8 +16,17 @@ const AboutUs = () => {
 
       {/* Image + Text Block */}
       <div className="container mx-auto px-4 mt-8 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center mb-12">
-        {/* Left Text Section */}
-        <div className="space-y-6 text-gray-700 leading-relaxed text-base md:text-lg text-left">
+        {/* Right Image (First on Mobile) */}
+        <div className="flex justify-center md:justify-end md:order-2">
+          <img
+            src={AboutUsImage}
+            alt="About Shivam Engineers & Interior Designers"
+            className="w-full max-w-[400px] h-auto aspect-square rounded-lg shadow-lg object-cover object-top"
+          />
+        </div>
+
+        {/* Left Text Section (Second on Mobile) */}
+        <div className="space-y-6 text-gray-700 leading-relaxed text-base md:text-lg text-left md:order-1">
           <p>
             Established in 2003 by Mr. Shailesh Mathur, Shivam Engineers & Interior Designers has evolved into a professionally managed organization recognized for its excellence in engineering and interior design services.
           </p>
@@ -33,15 +42,6 @@ const AboutUs = () => {
           <p>
             Equipped with advanced tools, technology, and a highly competent workforce, Shivam Engineers & Interior Designers remains committed to delivering projects that reflect excellence, efficiency, and aesthetic sophistication.
           </p>
-        </div>
-
-        {/* Right Image */}
-        <div className="flex justify-center md:justify-end">
-          <img
-            src={AboutUsImage}
-            alt="About Shivam Engineers & Interior Designers"
-            className="w-full max-w-[400px] h-auto aspect-square rounded-lg shadow-lg object-cover object-top"
-          />
         </div>
       </div>
     </div>

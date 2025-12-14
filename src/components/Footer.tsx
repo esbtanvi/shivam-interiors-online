@@ -19,57 +19,59 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div>
-            <h3 className='mb-4 text-sm font-semibold text-foreground'>
-              Quick Links
-            </h3>
-            <ul className='space-y-2'>
-              <li>
-                <Link
-                  to='/about-us'
-                  className='text-sm text-muted-foreground hover:text-primary transition-colors'
-                >
-                  About-Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/services'
-                  className='text-sm text-muted-foreground hover:text-primary transition-colors'
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/portfolio'
-                  className='text-sm text-muted-foreground hover:text-primary transition-colors'
-                >
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to='/contact'
-                  className='text-sm text-muted-foreground hover:text-primary transition-colors'
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <div className="grid grid-cols-2 gap-4 md:contents">
+            <div>
+              <h3 className='mb-4 text-sm font-semibold text-foreground'>
+                Quick Links
+              </h3>
+              <ul className='space-y-2'>
+                <li>
+                  <Link
+                    to='/about-us'
+                    className='text-sm text-muted-foreground hover:text-primary transition-colors'
+                  >
+                    About-Us
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/services'
+                    className='text-sm text-muted-foreground hover:text-primary transition-colors'
+                  >
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/portfolio'
+                    className='text-sm text-muted-foreground hover:text-primary transition-colors'
+                  >
+                    Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to='/contact'
+                    className='text-sm text-muted-foreground hover:text-primary transition-colors'
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          <div>
-            <h3 className='mb-4 text-sm font-semibold text-foreground'>
-              Our Services
-            </h3>
-            <ul className='space-y-2 text-sm text-muted-foreground'>
-              <li>Consultation</li>
-              <li>Planning</li>
-              <li>Quality Construction</li>
-              <li>Renovation</li>
-              <li>Interior Design</li>
-            </ul>
+            <div>
+              <h3 className='mb-4 text-sm font-semibold text-foreground'>
+                Our Services
+              </h3>
+              <ul className='space-y-2 text-sm text-muted-foreground'>
+                <li>Consultation</li>
+                <li>Planning</li>
+                <li>Quality Construction</li>
+                <li>Renovation</li>
+                <li>Interior Design</li>
+              </ul>
+            </div>
           </div>
 
           <div className='h-full'>
