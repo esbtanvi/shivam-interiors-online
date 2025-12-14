@@ -119,29 +119,72 @@ export default function Portfolio() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filteredProjects.map((project, index) => (
-              <Card key={index} className="border-border overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="relative overflow-hidden h-[750px]">
-                  <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentImageIndex[index] * 100}%)` }}>
-                    {project.images.map((img, imgIdx) => (
-                      <img key={imgIdx} src={img} alt={`${project.title} - Image ${imgIdx + 1}`} className="w-full flex-shrink-0 object-cover h-full" />
-                    ))}
-                  </div>
+<Card
+  key={index}
+  className="border-border overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1"
+>
+  {/* Image Section */}
+  <div className="relative overflow-hidden h-[750px]">
+    <div
+      className="flex transition-transform duration-700 ease-in-out"
+      style={{ transform: `translateX(-${currentImageIndex[index] * 100}%)` }}
+    >
+      {project.images.map((img, imgIdx) => (
+        <img
+          key={imgIdx}
+          src={img}
+          alt={`${project.title} - Image ${imgIdx + 1}`}
+          className="w-full flex-shrink-0 object-cover h-full"
+        />
+      ))}
+    </div>
 
-                  {project.images.length > 1 && (
-                    <>
-                      <button onClick={() => handlePrevImage(index)} className="absolute left-2 top-1/2 transform -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white rounded-full text-black text-2xl" aria-label="Previous image">‹</button>
-                      <button onClick={() => handleNextImage(index)} className="absolute right-2 top-1/2 transform -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white rounded-full text-black text-2xl" aria-label="Next image">›</button>
-                    </>
-                  )}
-                </div>
+    {project.images.length > 1 && (
+      <>
+        <button
+          onClick={() => handlePrevImage(index)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 rounded-full text-black text-xl"
+        >
+          ‹
+        </button>
+        <button
+          onClick={() => handleNextImage(index)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 rounded-full text-black text-xl"
+        >
+          ›
+        </button>
+      </>
+    )}
+  </div>
 
-                <CardContent className="p-4 pt-1 sm:pt-0 sm:-mt-5 md:p-6">
-                  <span className="text-sm text-accent font-semibold">{project.category}</span>
-                  <h3 className="text-xl font-semibold mt-1 mb-2 text-foreground">{project.title}</h3>
-                  {/* <p className="text-muted-foreground text-sm mb-3">{project.description}</p> */}
-                  <p className="text-sm text-primary font-medium">📍 {project.location}</p>
-                </CardContent>
-              </Card>
+  {/* Content Section */}
+  <CardContent
+    className="
+      p-4
+      -mt-16
+      sm:-mt-20
+      md:-mt-24
+      bg-background
+      relative
+      rounded-t-2xl
+      shadow-md
+    "
+  >
+    <span className="text-sm text-accent font-semibold">
+      {project.category}
+    </span>
+
+    <h3 className="text-xl font-semibold mt-1 mb-1 text-foreground">
+      {project.title}
+    </h3>
+
+    <p className="text-sm text-primary font-medium">
+      📍 {project.location}
+    </p>
+  </CardContent>
+</Card>
+
+
             ))}
           </div>
         </div>
