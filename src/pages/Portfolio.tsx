@@ -120,7 +120,7 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filteredProjects.map((project, index) => (
               <Card key={index} className="border-border overflow-hidden hover:shadow-lg transition-all hover:-translate-y-1">
-                <div className="relative overflow-hidden h-[800px]">
+                <div className="relative overflow-hidden h-[750px]">
                   <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentImageIndex[index] * 100}%)` }}>
                     {project.images.map((img, imgIdx) => (
                       <img key={imgIdx} src={img} alt={`${project.title} - Image ${imgIdx + 1}`} className="w-full flex-shrink-0 object-cover h-full" />
@@ -135,7 +135,7 @@ export default function Portfolio() {
                   )}
                 </div>
 
-                <CardContent className="p-4 pt-1 sm-pt-0 sm-mt-4 md:p-6">
+                <CardContent className="p-4 pt-1 sm:pt-0 sm:-mt-5 md:p-6">
                   <span className="text-sm text-accent font-semibold">{project.category}</span>
                   <h3 className="text-xl font-semibold mt-1 mb-2 text-foreground">{project.title}</h3>
                   {/* <p className="text-muted-foreground text-sm mb-3">{project.description}</p> */}
