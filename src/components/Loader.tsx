@@ -7,7 +7,7 @@ const Loader = () => {
       <div className="flex flex-col items-center gap-4">
         <Loader2 className="h-16 w-16 animate-spin text-primary" />
         <h2 className="text-xl font-semibold text-foreground animate-pulse">
-          Welcome to Shivam Interiors...
+          Welcome to Shivam Engineers...
         </h2>
       </div>
     </div>
