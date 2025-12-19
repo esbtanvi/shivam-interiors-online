@@ -2,15 +2,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import {
-  Building2,
-  Paintbrush,
-  Hammer,
-  Home,
-  Wrench,
-  TreePine,
-  ArrowRight,
-} from "lucide-react";
 import MaterialIcon from "@/components/Materialicon";
 
 const ICON_SIZE = "text-[65px]";

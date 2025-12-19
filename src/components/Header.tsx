@@ -61,10 +61,10 @@ export const Header = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <img
-            src="/assets/profile/SHIVAM-ENGINEERS-LOGO-1-copy.png"
+            src="/images/logo.png"
             alt="Shivam Engineers Logo"
             width={64}
-            height={64}
+            height={70}
             className="object-contain"
           />
         </Link>

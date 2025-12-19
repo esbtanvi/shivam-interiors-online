@@ -19,7 +19,7 @@ const AboutUs = () => {
         {/* Right Image (First on Mobile) */}
         <div className="flex justify-center md:justify-end md:order-2">
           <img
-            src={AboutUsImage}
+            src="/images/aboutUs.webp"
             alt="About Shivam Engineers & Interior Designers"
             className="w-full max-w-[400px] h-auto aspect-square rounded-lg shadow-lg object-cover object-top"
           />

@@ -3,17 +3,8 @@ import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Award, Building2, Users, CheckCircle } from "lucide-react";
-import heroImage from "@/assets/hero-construction.jpg";
-import interiorImage from "@/assets/interior-luxury.jpg";
-import teamImage from "@/assets/team-planning.jpg";
-import residentialProject1 from "@/assets/residentialProject1.jpeg";
-import commercialProject01 from "@/assets/commercialProject01.jpeg"
-import interiorDesign from "@/assets/interiorDesign.jpeg"
 import AboutUs from "./AboutUs";
 import logo from "@/assets/SHIVAM-ENGINEERS-LOGO-1-copy.png"
-import Hero1 from "@/assets/Hero1.jpeg"
-import Hero2 from "@/assets/hero2.jpg"
-import Hero3 from "@/assets/hero3.jpg"
 const services = [
   {
     title: "Consultation",
@@ -42,9 +33,9 @@ const features = [
 ];
 
 const projects = [
-  { image: residentialProject1, title: "Appartments", category: "Residential" },
-  { image: commercialProject01, title: "Commercial Buildings", category: "Commercial" },
-  { image: interiorDesign, title: "Soothing Spaces", category: "Interior Design" },
+  { image: "./images/residentialProject1.webp", title: "Appartments", category: "Residential" },
+  { image: "./images/commercialProject01.webp", title: "Commercial Buildings", category: "Commercial" },
+  { image: "./images/interiorDesign.webp", title: "Soothing Spaces", category: "Interior Design" },
 ];
 
 const fadeInUp: Variants = {
@@ -69,23 +60,21 @@ const staggerContainer: Variants = {
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
 <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
   
-  {/* --- IMAGE STRIP --- */}
   <div className="absolute inset-0 flex justify-center gap-4 px-4">
     <img 
-      src={Hero1}
+      src="/images/Hero1.webp"
       alt="Hero Image 1"
       className="h-full object-cover rounded-lg"
     />
     <img 
-      src={Hero2}
+      src="/images/hero2.webp"
       alt="Hero Image 2"
       className="h-full object-cover rounded-lg"
     />
     <img 
-      src={Hero3} 
+      src="/images/hero3.webp"
       alt="Hero Image 3"
       className="h-full object-cover rounded-lg"
     />
@@ -180,7 +169,7 @@ export default function Home() {
               variants={fadeInUp}
             >
               <img 
-                src={interiorImage} 
+                src="./images/interior-luxury.webp" 
                 alt="Luxury interior design" 
                 className="rounded-lg shadow-xl w-full h-[400px] object-cover"
               />
@@ -272,7 +261,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <motion.section 
-        className="py-10 md:py-16 bg-gradient-to-r from-[#E3F2FD]  to-[#0040FF]"
+        className="py-10 md:py-16 bg-gradient-to-r from-[#f4f3f3]  to-[#ffaf03]"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
@@ -281,9 +270,9 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
 
           <img 
-            src={logo} 
+            src="./images/logo.png"
             alt="Our professional team"
-            className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-white shadow-lg"
+            className="w-50 h-50   mx-auto mb-6 "
           />
 
           <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">
