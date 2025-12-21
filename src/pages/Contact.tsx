@@ -8,6 +8,7 @@ import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import emailjs from "emailjs-com";
+import ReactGA from "react-ga4";
 
 
 const serviceOptions = [
@@ -47,6 +48,14 @@ export default function Contact() {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
+  const handleClick = () => {
+  ReactGA.event({
+    category: "CTA",
+    action: "Contact US Click",
+    label: "Contact US Form",
+  });
+};
+
 
   const handleServiceToggle = (serviceId: string) => {
     setFormData((prev) => ({
@@ -55,7 +64,6 @@ export default function Contact() {
         ? prev.services.filter((id) => id !== serviceId)
         : [...prev.services, serviceId],
     }));
-    // Clear error when user selects a service
     if (errors.services) {
       setErrors((prev) => ({ ...prev, services: "" }));
     }
@@ -64,7 +72,6 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Submit to Formspree
 try {
   const response = await fetch("https://formspree.io/f/mblnpkjr", {
     method: "POST",
@@ -258,7 +265,7 @@ await emailjs.send(
 
                
 
-                <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
+                <Button  onClick={handleClick}  type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
                   Send Message
                 </Button>
               </form>

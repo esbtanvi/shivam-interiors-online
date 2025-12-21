@@ -13,11 +13,17 @@ import AboutUs from "./pages/AboutUs";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import Loader from "./components/Loader";
+import ScrollToTop from "./components/ScrollToTop";
+import { usePageTracking } from "./hooks/usePageTracking";
 const queryClient = new QueryClient();
+
+ const PageTracker = ({ children }: { children: React.ReactNode }) => {
+  usePageTracking();
+  return <>{children}</>;
+};
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const visited = Cookies.get("shivam_interiors_visited");
     if (visited) {
@@ -26,7 +32,7 @@ const App = () => {
       Cookies.set("shivam_interiors_visited", "true", { expires: 365 });
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 5000);
+      }, 2500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -41,18 +47,23 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about-us" element={<AboutUs />} />
+          <PageTracker>
+            <ScrollToTop />
 
-              <Route path="/services" element={<Services />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/contact" element={<Contact />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about-us" element={<AboutUs />} />
+
+                <Route path="/services" element={<Services />} />
+                <Route path="/portfolio" element={<Portfolio />} />
+                <Route path="/contact" element={<Contact />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Layout>
+          </PageTracker>
+
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

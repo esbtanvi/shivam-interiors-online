@@ -1,5 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Building2, Mail, Phone, MapPin, Pin, Facebook, Instagram } from 'lucide-react';
+import {
+  Building2,
+  Mail,
+  Phone,
+  MapPin,
+  Pin,
+  Facebook,
+  Instagram,
+} from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -19,7 +27,7 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 md:contents">
+          <div className='grid grid-cols-2 gap-4 md:contents'>
             <div>
               <h3 className='mb-4 text-sm font-semibold text-foreground'>
                 Quick Links
@@ -92,8 +100,10 @@ export const Footer = () => {
               <li className='flex items-start gap-2 text-sm text-muted-foreground'>
                 <Pin className='h-7 w-7 mt-0.5 text-accent' />
                 <span>
-                  Mahima Trinity Mall,Swage Farm,New Sanganer
-                  Road,Sodala,Jaipur- 302019
+                  <a href='https://maps.app.goo.gl/KFTRjLmnkpycv9i67'>
+                    Swej Farm Rd, Radha Vihar, Shiva Colony, Govindpuri, Jaipur,
+                    Rajasthan 302019, India
+                  </a>
                 </span>
               </li>
 
@@ -103,13 +113,12 @@ export const Footer = () => {
                   <span>Shivam Engineers</span>
                 </a>
               </li>
-   <li className='flex items-start gap-2 text-sm text-muted-foreground'>
+              <li className='flex items-start gap-2 text-sm text-muted-foreground'>
                 <Instagram className='h-4 w-4 mt-0.5 text-accent' />
                 <a href='https://www.instagram.com/shivamengineersandinteriors'>
                   <span>@shivamengineersandinteriors</span>
                 </a>
               </li>
-
             </ul>
           </div>
         </div>

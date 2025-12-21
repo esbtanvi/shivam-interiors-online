@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
-
+import { motion, Variants } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import {
@@ -108,8 +108,53 @@ export default function Portfolio() {
     selectedCategory === 'All'
       ? projects
       : projects.filter((p) => p.category === selectedCategory);
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.12, 
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  }),
+};
 
   return (
+    <>
+      <motion.section
+        className='py-10 md:py-16 bg-gradient-to-r from-[#f4f3f3]  to-[#ffaf03]'
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true, margin: '-100px' }}
+        variants={fadeInUp}
+      >
+        <div className='container mx-auto px-4 text-center'>
+     
+          <p className='text-white font-bold mb-6 max-w-3xl text-9xl mx-auto'>
+            Our Portfolio
+          </p>
+ 
+            
+         
+
+        </div>
+      </motion.section>
+
+
     <div className='min-h-screen'>
       {/* FILTER */}
       <section className='sticky top-[72px] z-40 bg-background border-b py-6'>
@@ -130,6 +175,7 @@ export default function Portfolio() {
       <section className='py-16'>
         <div className='container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10'>
           {filteredProjects.map((project, i) => (
+            
             <Card key={i} className='overflow-hidden hover:shadow-xl'>
 <Carousel
   opts={{ loop: true }}
@@ -185,5 +231,7 @@ export default function Portfolio() {
         </div>
       </section>
     </div>
+        </>
+
   );
 }
